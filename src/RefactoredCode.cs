@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    internal class DefaultCode
+    internal class RefactoredCode
     {
         private static readonly char[] CheatNumber = { 'X', 'X', 'X', 'X' };
         private static readonly Dictionary<string, int> TopScoreBoard = new Dictionary<string, int>();
