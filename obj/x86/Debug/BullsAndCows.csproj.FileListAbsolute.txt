@@ -1,0 +1,5 @@
+C:\Users\azz\Desktop\Bulls-and-Cows\bin\Debug\BullsAndCows.exe
+C:\Users\azz\Desktop\Bulls-and-Cows\bin\Debug\BullsAndCows.pdb
+C:\Users\azz\Desktop\Bulls-and-Cows\obj\x86\Debug\BullsAndCows.csprojResolveAssemblyReference.cache
+C:\Users\azz\Desktop\Bulls-and-Cows\obj\x86\Debug\BullsAndCows.exe
+C:\Users\azz\Desktop\Bulls-and-Cows\obj\x86\Debug\BullsAndCows.pdb

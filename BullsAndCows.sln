@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "project", "project.csproj", "{39CAAA50-DCF7-4C1C-BCAA-40DEEB1A1641}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows", "BullsAndCows.csproj", "{39CAAA50-DCF7-4C1C-BCAA-40DEEB1A1641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
