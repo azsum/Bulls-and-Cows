@@ -15,8 +15,8 @@
             string command = null;
             var countRevealingDigits=0;
 
-            var count1 = 0;
-            var count2 = 0;
+            var attemptsCount = 0;
+            var usingHelpCount = 0;
 
 
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
@@ -28,11 +28,6 @@
 
                 if (command == "help")
                 {
-                    countRevealingDigits++;
-                    if(countRevealingDigits==4)
-                    {
-                        break;
-                    }
                     var revealedDigits = RandomGenerator.RevealNumberAtRandomPosition(randomNumber, cheatNumber);
                     var revealedNumber = new StringBuilder();
 
@@ -40,9 +35,20 @@
                     {
                         revealedNumber.Append(revealedDigits[i]);
                     }
+
+                    countRevealingDigits++;
+                    if (countRevealingDigits == 4)
+                    {
+                        Console.WriteLine("The secret number is {0}", revealedNumber);
+                        Console.WriteLine();
+                        GameOn.Game();
+                        // to exit the game after exiting the upper game
+                        break;  
+                    }
                     
                     Console.WriteLine("The number looks like {0}", revealedNumber);
-                    count2++;
+
+                    usingHelpCount++;
                     continue;
                 }
 
@@ -50,7 +56,7 @@
                 {
                     Console.WriteLine();
                     GameEngine.StartGame();
-                    count1 = 0;
+                    attemptsCount = 0;
                     randomNumber = RandomGenerator.GenerateRandomSecretNumber();
                     continue;
                 }
@@ -82,39 +88,38 @@
                     continue;
                 }
 
-                count1++;
+                attemptsCount++;
                 var bulls = 0;
                 var cows = 0;
                 GameEngine.CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
                 if (command == randomNumber)
                 {
-                    if (count2 > 0)
+                    if (usingHelpCount > 0)
                     {
                         Console.WriteLine(
                             "Congratulations! You guessed the secret number in {0} attempts and {1} cheats.",
-                            count1, count2);
-                        Console.WriteLine("You are not allowed to enter the top scoreboard.");
-                        ScoreBoard.SortScoreBoard();
-                        ScoreBoard.PrintScoreBoard();
+                            attemptsCount, usingHelpCount);
+                        //Console.WriteLine("You are not allowed to enter the top scoreboard.");
+                        //ScoreBoard.SortScoreBoard();
+                        //ScoreBoard.PrintScoreBoard();
                         Console.WriteLine();
                         GameEngine.StartGame();
-                        count1 = 0;
-                        count2 = 0;
+                        attemptsCount = 0;
+                        usingHelpCount = 0;
                         randomNumber = RandomGenerator.GenerateRandomSecretNumber();
                     }
                     else
                     {
-                        Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", count1);
-                        ScoreBoard.AddPlayerToScoreBoard(count1);
-                        count1 = 0;
+                        Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attemptsCount);
+                        ScoreBoard.AddPlayerToScoreBoard(attemptsCount);
+                        attemptsCount = 0;
                         Console.WriteLine();
                         GameEngine.StartGame();
                         randomNumber = RandomGenerator.GenerateRandomSecretNumber();
-                        continue;
                     }
-
-                    Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                    continue;
                 }
+                Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
             }
         }
     }
