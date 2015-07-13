@@ -1,9 +1,11 @@
-﻿namespace BullsAndCows.Engine
+﻿using BullsAndCows.Functionality;
+
+namespace BullsAndCows.Engine
 {
     using System;
     using System.Collections.Generic;
 
-    internal class GameEngine
+    internal class GameEngine:ScoreBoard
     {
         public static void StartGame()
         {

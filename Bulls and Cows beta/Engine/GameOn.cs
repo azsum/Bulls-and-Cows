@@ -1,17 +1,19 @@
-﻿namespace BullsAndCows.Engine
+﻿using BullsAndCows.Functionality;
+
+namespace BullsAndCows.Engine
 {
     using System;
     using System.Text;
     using Components;
 
-    internal class GameOn
+    internal class GameOn:GameEngine
 
     {
         internal static void Game()
         {
-            GameEngine.StartGame();
+            StartGame();
 
-            var randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+            var randomNumber = GenerateRandomSecretNumber();
             string command = null;
             var countRevealingDigits=0;
 
@@ -33,7 +35,7 @@
                     {
                         break;
                     }
-                    var revealedDigits = RandomGenerator.RevealNumberAtRandomPosition(randomNumber, cheatNumber);
+                    var revealedDigits = RevealNumberAtRandomPosition(randomNumber, cheatNumber);
                     var revealedNumber = new StringBuilder();
 
                     for (var i = 0; i < 4; i++)
@@ -51,20 +53,20 @@
                     Console.WriteLine();
                     GameEngine.StartGame();
                     count1 = 0;
-                    randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                    randomNumber = GenerateRandomSecretNumber();
                     continue;
                 }
 
                 if (command == "top")
                 {
-                    if (ScoreBoard.TopScoreBoard.Count == 0)
+                    if (TopScoreBoard.Count == 0)
                     {
                         Console.WriteLine("Top scoreboard is empty.");
                     }
                     else
                     {
-                        ScoreBoard.SortScoreBoard();
-                        ScoreBoard.PrintScoreBoard();
+                        SortScoreBoard();
+                        PrintScoreBoard();
                     }
 
                     continue;
@@ -76,7 +78,7 @@
                     break;
                 }
 
-                if (command.Length != 4 || GameEngine.ValidateDigits(command) == false)
+                if (command.Length != 4 || ValidateDigits(command) == false)
                 {
                     Console.WriteLine("Incorrect guess or command!");
                     continue;
@@ -85,7 +87,7 @@
                 count1++;
                 var bulls = 0;
                 var cows = 0;
-                GameEngine.CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
+                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
                 if (command == randomNumber)
                 {
                     if (count2 > 0)
@@ -94,22 +96,22 @@
                             "Congratulations! You guessed the secret number in {0} attempts and {1} cheats.",
                             count1, count2);
                         Console.WriteLine("You are not allowed to enter the top scoreboard.");
-                        ScoreBoard.SortScoreBoard();
-                        ScoreBoard.PrintScoreBoard();
+                        SortScoreBoard();
+                        PrintScoreBoard();
                         Console.WriteLine();
-                        GameEngine.StartGame();
+                        StartGame();
                         count1 = 0;
                         count2 = 0;
-                        randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                        randomNumber = GenerateRandomSecretNumber();
                     }
                     else
                     {
                         Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", count1);
-                        ScoreBoard.AddPlayerToScoreBoard(count1);
+                        AddPlayerToScoreBoard(count1);
                         count1 = 0;
                         Console.WriteLine();
-                        GameEngine.StartGame();
-                        randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                        StartGame();
+                        randomNumber = GenerateRandomSecretNumber();
                         continue;
                     }
 

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using BullsAndCows.Components;
 
-namespace BullsAndCows.Components
+namespace BullsAndCows.Functionality
 {
-    internal class ScoreBoard
+    internal class ScoreBoard:RandomGenerator
     {
         private static int _lastPlayerScore = int.MinValue;
 

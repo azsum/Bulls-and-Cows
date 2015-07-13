@@ -3,11 +3,11 @@
 namespace BullsAndCows
 {
     
-    public class PlayBullAndCows
+    internal class PlayBullAndCows:GameOn
     {
         private static void Main()
         {
-            GameOn.Game();
+            Game();
         }
     }
 }
