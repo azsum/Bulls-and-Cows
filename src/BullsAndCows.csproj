@@ -41,22 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionality\RandomGenerator.cs" />
-    <Compile Include="Functionality\ScoreBoard.cs" />
-    <Compile Include="Engine\GameEngine.cs" />
+    <Compile Include="Functionalityes\ScoreBoard.cs" />
+    <Compile Include="Engine\EngineMethods.cs" />
     <Compile Include="Engine\GameOn.cs" />
+    <Compile Include="AbstractClasses\AbstractScoreboard.cs" />
+    <Compile Include="Interfaces\IRandomGenerator.cs" />
     <Compile Include="PlayBullAndCows.cs" />
-    <Compile Include="BullsAndCowsTexts.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BullsAndCowsTexts.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Validations\Validators.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BullsAndCowsTexts.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BullsAndCowsTexts.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

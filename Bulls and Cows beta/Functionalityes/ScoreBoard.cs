@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using BullsAndCows.Components;
-
-namespace BullsAndCows.Functionality
+﻿
+namespace BullsAndCows.Functionalityes
 {
-    internal class ScoreBoard:RandomGenerator
+    using System;
+    using System.Collections.Generic;
+    using AbstractClasses;
+
+    public class ScoreBoard : AbstractScoreboard
     {
-        private static int _lastPlayerScore = int.MinValue;
-
-        internal static readonly Dictionary<string, int> TopScoreBoard = new Dictionary<string, int>();
-        private static readonly List<KeyValuePair<string, int>> ListDict = new List<KeyValuePair<string, int>>();
-
-        private static int SortDictionary(KeyValuePair<string, int> left, KeyValuePair<string, int> right)
-        {
-            return left.Value.CompareTo(right.Value);
-        }
-
-        internal static void SortScoreBoard()
+        public override void SortScoreBoard()
         {
             foreach (var pair in TopScoreBoard)
             {
@@ -27,7 +18,7 @@ namespace BullsAndCows.Functionality
             Console.WriteLine("Scoreboard: ");
         }
 
-        internal static void PrintScoreBoard( )
+        public override void PrintScoreBoard()
         {
             var counter = 0;
             foreach (var player in ListDict)
@@ -39,29 +30,28 @@ namespace BullsAndCows.Functionality
             ListDict.Clear();
         }
 
-        internal static void AddPlayerToScoreBoard(int score)
+        public override void AddPlayerToScoreBoard(int score)
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             var name = Console.ReadLine();
             TopScoreBoard.Add(name, score);
 
-            if (score > _lastPlayerScore)
+            if (score > LastPlayerScore)
             {
-                _lastPlayerScore = score;
+                LastPlayerScore = score;
             }
 
             if (TopScoreBoard.Count > 5)
             {
                 foreach (var player in TopScoreBoard)
                 {
-                    if (player.Value == _lastPlayerScore)
+                    if (player.Value == LastPlayerScore)
                     {
                         TopScoreBoard.Remove(player.Key);
                         break;
                     }
                 }
             }
-
             SortScoreBoard();
         }
     }

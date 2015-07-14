@@ -1,13 +1,12 @@
-﻿using BullsAndCows.Engine;
-
-namespace BullsAndCows
+﻿namespace BullsAndCows
 {
-    
-    internal class PlayBullAndCows:GameOn
+    using BullsAndCows.Engine;
+
+    sealed class PlayBullAndCows:GameOn
     {
         private static void Main()
         {
-            Game();
+            RunTheGame();
         }
     }
 }

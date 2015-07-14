@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionalityes\RandomGenerator.cs" />
     <Compile Include="Functionalityes\ScoreBoard.cs" />
-    <Compile Include="Engine\GameEngine.cs" />
+    <Compile Include="Engine\EngineMethods.cs" />
     <Compile Include="Engine\GameOn.cs" />
+    <Compile Include="AbstractClasses\AbstractScoreboard.cs" />
+    <Compile Include="Interfaces\IRandomGenerator.cs" />
     <Compile Include="PlayBullAndCows.cs" />
+    <Compile Include="Validations\Validators.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

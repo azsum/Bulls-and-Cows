@@ -2,33 +2,62 @@
 {
     using System;
     using System.Text;
-    using Components;
+    using AbstractClasses;
+    using Validations;
+    using Interfaces;
 
-    internal class GameOn
+    internal class GameOn : AbstractScoreboard, IRandomGenerator
+
     {
-        internal static void Game()
+        public static void RunTheGame()
         {
-            GameEngine.StartGame();
+            GameOn instance = new GameOn();
+            instance.Game();
+        }
 
-            var randomNumber = RandomGenerator.GenerateRandomSecretNumber();
-            string command = null;
+        public string GenerateRandomSecretNumber()
+        {
+            var secretNumber = new StringBuilder();
+            var random = new Random();
+            while (secretNumber.Length != 4)
+            {
+                var number = random.Next(0, 10);
+                secretNumber.Append(number.ToString());
+            }
+
+            return secretNumber.ToString();
+        }
+
+        public char[] RevealNumberAtRandomPosition(string secretnumber, char[] cheatNumber)
+        {
+            while (true)
+            {
+                var rand = new Random();
+                var index = rand.Next(0, 4);
+                if (cheatNumber[index] == 'X')
+                {
+                    cheatNumber[index] = secretnumber[index];
+                    return cheatNumber;
+                }
+            }
+        }
+
+        protected void Game()
+        {
+            EngineMethods.StartGame();
+            var randomNumber = GenerateRandomSecretNumber();
             var countRevealingDigits = 0;
-
             var attemptsCount = 0;
             var usingHelpCount = 0;
-
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
-
             while (true)
             {
                 Console.Write("Enter your guess or command: ");
-                command = Console.ReadLine();
-
+                var command = Console.ReadLine();
                 if (command == "help")
                 {
-                    var revealedDigits = RandomGenerator.RevealNumberAtRandomPosition(randomNumber, cheatNumber);
+                    var revealedDigits = RevealNumberAtRandomPosition(randomNumber, cheatNumber);
                     var revealedNumber = new StringBuilder();
-
                     for (var i = 0; i < 4; i++)
                     {
                         revealedNumber.Append(revealedDigits[i]);
@@ -39,11 +68,11 @@
                     {
                         Console.WriteLine("The secret number is {0}", revealedNumber);
                         Console.WriteLine();
-                        GameOn.Game();
-                        //// to exit the game after exiting the upper game
-                        break;  
+                        Game();
+                        // to exit the game after exiting the upper game
+                        break;
                     }
-                    
+
                     Console.WriteLine("The number looks like {0}", revealedNumber);
 
                     usingHelpCount++;
@@ -53,22 +82,22 @@
                 if (command == "restart")
                 {
                     Console.WriteLine();
-                    GameEngine.StartGame();
+                    EngineMethods.StartGame();
                     attemptsCount = 0;
-                    randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                    randomNumber = GenerateRandomSecretNumber();
                     continue;
                 }
 
                 if (command == "top")
                 {
-                    if (ScoreBoard.TopScoreBoard.Count == 0)
+                    if (TopScoreBoard.Count == 0)
                     {
                         Console.WriteLine("Top scoreboard is empty.");
                     }
                     else
                     {
-                        ScoreBoard.SortScoreBoard();
-                        ScoreBoard.PrintScoreBoard();
+                        SortScoreBoard();
+                        PrintScoreBoard();
                     }
 
                     continue;
@@ -80,7 +109,7 @@
                     break;
                 }
 
-                if (command.Length != 4 || GameEngine.ValidateDigits(command) == false)
+                if (command.Length != 4 || Validators.ValidateDigits(command) == false)
                 {
                     Console.WriteLine("Incorrect guess or command!");
                     continue;
@@ -89,26 +118,31 @@
                 attemptsCount++;
                 var bulls = 0;
                 var cows = 0;
-                GameEngine.CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
+                EngineMethods.CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
                 if (command == randomNumber)
                 {
                     if (usingHelpCount > 0)
                     {
-                        Console.WriteLine(BullsAndCowsTexts.CongratulationMessageWithCheating, attemptsCount, usingHelpCount);
+                        Console.WriteLine(
+                            "Congratulations! You guessed the secret number in {0} attempts and {1} cheats.",
+                            attemptsCount, usingHelpCount);
+                        //Console.WriteLine("You are not allowed to enter the top scoreboard.");
+                        //ScoreBoard.SortScoreBoard();
+                        //ScoreBoard.PrintScoreBoard();
                         Console.WriteLine();
-                        GameEngine.StartGame();
+                        EngineMethods.StartGame();
                         attemptsCount = 0;
                         usingHelpCount = 0;
-                        randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                        randomNumber = GenerateRandomSecretNumber();
                     }
                     else
                     {
-                        Console.WriteLine(BullsAndCowsTexts.CongratulationMessageWithoutCheating, attemptsCount);
-                        ScoreBoard.AddPlayerToScoreBoard(attemptsCount);
+                        Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attemptsCount);
+                        AddPlayerToScoreBoard(attemptsCount);
                         attemptsCount = 0;
                         Console.WriteLine();
-                        GameEngine.StartGame();
-                        randomNumber = RandomGenerator.GenerateRandomSecretNumber();
+                        EngineMethods.StartGame();
+                        randomNumber = GenerateRandomSecretNumber();
                     }
 
                     continue;

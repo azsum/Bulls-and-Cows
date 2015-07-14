@@ -2,11 +2,11 @@
 {
     using BullsAndCows.Engine;
 
-    public class PlayBullAndCows
+    sealed class PlayBullAndCows:GameOn
     {
         private static void Main()
         {
-            GameOn.Game();
+            RunTheGame();
         }
     }
 }

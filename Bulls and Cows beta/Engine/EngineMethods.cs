@@ -3,32 +3,16 @@
     using System;
     using System.Collections.Generic;
 
-    internal class GameEngine
+    public class EngineMethods
     {
         public static void StartGame()
         {
-            Console.WriteLine(BullsAndCowsTexts.WelcomeMessage);
-            Console.WriteLine();
+            Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.");
+            Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game and 'help' " +
+                              "to cheat and 'exit' to quit the game.");
         }
 
-        internal static bool ValidateDigits(string num)
-        {
-            var count = 0;
-            for (var i = 0; i < 4; i++)
-            {
-                if (char.IsDigit(num[i]))
-                {
-                    count++;
-                }
-            }
 
-            if (count == 4)
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         internal static void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows)
         {
