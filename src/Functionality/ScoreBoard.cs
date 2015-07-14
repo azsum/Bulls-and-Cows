@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BullsAndCows.Components
+﻿namespace BullsAndCows.Components
 {
+    using System;
+    using System.Collections.Generic;
+
     internal class ScoreBoard
     {
-        private static int _lastPlayerScore = int.MinValue;
-
         internal static readonly Dictionary<string, int> TopScoreBoard = new Dictionary<string, int>();
+
         private static readonly List<KeyValuePair<string, int>> ListDict = new List<KeyValuePair<string, int>>();
 
-        private static int SortDictionary(KeyValuePair<string, int> left, KeyValuePair<string, int> right)
-        {
-            return left.Value.CompareTo(right.Value);
-        }
+        private static int lastPlayerScore = int.MinValue;
 
         internal static void SortScoreBoard()
         {
@@ -26,7 +22,7 @@ namespace BullsAndCows.Components
             Console.WriteLine("Scoreboard: ");
         }
 
-        internal static void PrintScoreBoard( )
+        internal static void PrintScoreBoard()
         {
             var counter = 0;
             foreach (var player in ListDict)
@@ -44,16 +40,16 @@ namespace BullsAndCows.Components
             var name = Console.ReadLine();
             TopScoreBoard.Add(name, score);
 
-            if (score > _lastPlayerScore)
+            if (score > lastPlayerScore)
             {
-                _lastPlayerScore = score;
+                lastPlayerScore = score;
             }
 
             if (TopScoreBoard.Count > 5)
             {
                 foreach (var player in TopScoreBoard)
                 {
-                    if (player.Value == _lastPlayerScore)
+                    if (player.Value == lastPlayerScore)
                     {
                         TopScoreBoard.Remove(player.Key);
                         break;
@@ -62,6 +58,11 @@ namespace BullsAndCows.Components
             }
 
             SortScoreBoard();
+        }
+
+        private static int SortDictionary(KeyValuePair<string, int> left, KeyValuePair<string, int> right)
+        {
+            return left.Value.CompareTo(right.Value);
         }
     }
 }

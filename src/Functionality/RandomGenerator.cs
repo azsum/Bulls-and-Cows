@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text;
-
-namespace BullsAndCows.Components
+﻿namespace BullsAndCows.Components
 {
+    using System;
+    using System.Text;
+
     internal class RandomGenerator
     {
         internal static string GenerateRandomSecretNumber()

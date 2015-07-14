@@ -1,8 +1,7 @@
-﻿using BullsAndCows.Engine;
-
-namespace BullsAndCows
+﻿namespace BullsAndCows
 {
-    
+    using BullsAndCows.Engine;
+
     public class PlayBullAndCows
     {
         private static void Main()

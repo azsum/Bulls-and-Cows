@@ -5,7 +5,6 @@
     using Components;
 
     internal class GameOn
-
     {
         internal static void Game()
         {
@@ -13,11 +12,10 @@
 
             var randomNumber = RandomGenerator.GenerateRandomSecretNumber();
             string command = null;
-            var countRevealingDigits=0;
+            var countRevealingDigits = 0;
 
             var attemptsCount = 0;
             var usingHelpCount = 0;
-
 
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
 
@@ -42,7 +40,7 @@
                         Console.WriteLine("The secret number is {0}", revealedNumber);
                         Console.WriteLine();
                         GameOn.Game();
-                        // to exit the game after exiting the upper game
+                        //// to exit the game after exiting the upper game
                         break;  
                     }
                     
@@ -96,12 +94,7 @@
                 {
                     if (usingHelpCount > 0)
                     {
-                        Console.WriteLine(
-                            "Congratulations! You guessed the secret number in {0} attempts and {1} cheats.",
-                            attemptsCount, usingHelpCount);
-                        //Console.WriteLine("You are not allowed to enter the top scoreboard.");
-                        //ScoreBoard.SortScoreBoard();
-                        //ScoreBoard.PrintScoreBoard();
+                        Console.WriteLine(BullsAndCowsTexts.CongratulationMessageWithCheating, attemptsCount, usingHelpCount);
                         Console.WriteLine();
                         GameEngine.StartGame();
                         attemptsCount = 0;
@@ -110,15 +103,17 @@
                     }
                     else
                     {
-                        Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attemptsCount);
+                        Console.WriteLine(BullsAndCowsTexts.CongratulationMessageWithoutCheating, attemptsCount);
                         ScoreBoard.AddPlayerToScoreBoard(attemptsCount);
                         attemptsCount = 0;
                         Console.WriteLine();
                         GameEngine.StartGame();
                         randomNumber = RandomGenerator.GenerateRandomSecretNumber();
                     }
+
                     continue;
                 }
+
                 Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
             }
         }
