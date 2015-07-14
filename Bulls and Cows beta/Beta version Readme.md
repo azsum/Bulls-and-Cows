@@ -4,5 +4,5 @@ The game is working.This folder is for all updates that we make.
 From time to time I will save a working beta copy of the project to folder src.
 Please do not commit in src folder.
 
-TODO: Documentating of refactoring.I will make it tomorrow.
+
 
