@@ -1,51 +1,60 @@
-﻿
-namespace BullsAndCows.Functionalityes
+﻿namespace BullsAndCows.Functionalityes
 {
     using System;
     using System.Collections.Generic;
-    using AbstractClasses;
 
-    public class ScoreBoard : AbstractScoreboard
+    public abstract class Scoreboard:IScoreboard
     {
-        public override void SortScoreBoard()
+        private  int lastPlayerScore = Int32.MinValue;
+        private  readonly List<KeyValuePair<string, int>> listDict = new List<KeyValuePair<string, int>>();
+        internal  readonly Dictionary<string, int> TopScoreBoard = new Dictionary<string, int>();
+
+        public  int SortedDictionary(KeyValuePair<string, int> left, KeyValuePair<string, int> right)
+        {
+            return left.Value.CompareTo(right.Value);
+        }
+
+        public  void SortScoreBoard()
         {
             foreach (var pair in TopScoreBoard)
             {
-                ListDict.Add(new KeyValuePair<string, int>(pair.Key, pair.Value));
+                listDict.Add(new KeyValuePair<string, int>(pair.Key, pair.Value));
             }
 
-            ListDict.Sort(SortDictionary);
+            listDict.Sort(SortedDictionary);
             Console.WriteLine("Scoreboard: ");
         }
 
-        public override void PrintScoreBoard()
+        public  void PrintScoreBoard()
         {
-            var counter = 0;
-            foreach (var player in ListDict)
+            int counter = 0;
+            foreach (KeyValuePair<string, int> player in listDict)
             {
                 counter++;
                 Console.WriteLine("{0}. {1} --> {2} guesses", counter, player.Key, player.Value);
             }
-
-            ListDict.Clear();
+            listDict.Clear();
         }
 
-        public override void AddPlayerToScoreBoard(int score)
+        public  void AddPlayerToScoreBoard(int score)
         {
             Console.Write("Please enter your name for the top scoreboard: ");
-            var name = Console.ReadLine();
-            TopScoreBoard.Add(name, score);
-
-            if (score > LastPlayerScore)
+            string name = Console.ReadLine();
+            if (name != null)
             {
-                LastPlayerScore = score;
+                TopScoreBoard.Add(name, score);
+            }
+
+            if (score > lastPlayerScore)
+            {
+                lastPlayerScore = score;
             }
 
             if (TopScoreBoard.Count > 5)
             {
-                foreach (var player in TopScoreBoard)
+                foreach (KeyValuePair<string, int> player in TopScoreBoard)
                 {
-                    if (player.Value == LastPlayerScore)
+                    if (player.Value == lastPlayerScore)
                     {
                         TopScoreBoard.Remove(player.Key);
                         break;
@@ -53,6 +62,7 @@ namespace BullsAndCows.Functionalityes
                 }
             }
             SortScoreBoard();
+            PrintScoreBoard();
         }
     }
 }

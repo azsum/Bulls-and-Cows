@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BullsAndCows.Validations.Validators" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validations\Validators.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.GameEngine.Engine" Collapsed="true">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAADAAAAAAAAABAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>GameEngine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Functionalityes.Scoreboard" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAABAIAAAAAAAAAAAAAAAACEABAAAAAAAEAAA=</HashCode>
+      <FileName>Functionalityes\Scoreboard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BullsAndCows.GameEngine.EngineMethods" Collapsed="true">
+    <Position X="2" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAoAAAAAAAAAA=</HashCode>
+      <FileName>GameEngine\EngineMethods.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BullsAndCows.StartGame" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>StartGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Commands.Command" Collapsed="true">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIQAAAAAACIAAAAAAAAAAAAAAAAACCAAAAEA=</HashCode>
+      <FileName>Commands\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BullsAndCows.Functionalityes.Player" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functionalityes\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BullsAndCows.Commands.ICommands" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAEA=</HashCode>
+      <FileName>Commands\ICommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BullsAndCows.GameEngine.IEngine" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>GameEngine\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BullsAndCows.Validations.IValidations" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validations\IValidations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BullsAndCows.GameEngine.IRandomMethods" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>GameEngine\IRandomMethods.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

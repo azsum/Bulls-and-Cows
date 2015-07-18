@@ -41,16 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionalityes\ScoreBoard.cs" />
-    <Compile Include="Engine\EngineMethods.cs" />
-    <Compile Include="Engine\GameOn.cs" />
-    <Compile Include="AbstractClasses\AbstractScoreboard.cs" />
-    <Compile Include="Interfaces\IRandomGenerator.cs" />
-    <Compile Include="PlayBullAndCows.cs" />
+    <Compile Include="Functionalityes\IScoreboard.cs" />
+    <Compile Include="GameEngine\EngineMethods.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="GameEngine\IEngine.cs" />
+    <Compile Include="Functionalityes\Player.cs" />
+    <Compile Include="GameEngine\Engine.cs" />
+    <Compile Include="Functionalityes\Scoreboard.cs" />
+    <Compile Include="Commands\ICommands.cs" />
+    <Compile Include="GameEngine\IRandomMethods.cs" />
+    <Compile Include="StartGame.cs" />
+    <Compile Include="Validations\IValidations.cs" />
     <Compile Include="Validations\Validators.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="BullsAndCowsClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

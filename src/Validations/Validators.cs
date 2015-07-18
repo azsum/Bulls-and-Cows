@@ -2,7 +2,9 @@
 {
     public class Validators
     {
-        internal static bool ValidateDigits(string number)
+
+
+        public static bool ValidateDigits(string number)
         {
             var count = 0;
             for (var i = 0; i < 4; i++)
