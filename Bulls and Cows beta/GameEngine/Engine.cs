@@ -45,7 +45,7 @@
             {
                 Console.Write("Enter your guess or command: ");
                 var command = Console.ReadLine();
-                bool isValidCommand = command != null && (command.Length != 4 || Validators.ValidateDigits(command) == false);
+                bool isValidCommand = command != null && (command.Length != 4 || Validations.ValidateDigits(command) == false);
                 switch (command)
                 {
                     case "help":

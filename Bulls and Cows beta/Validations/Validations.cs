@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Validations
 {
-    public class Validators
+    public class Validations
     {
 
 

@@ -52,7 +52,7 @@
     <Compile Include="GameEngine\IRandomMethods.cs" />
     <Compile Include="StartGame.cs" />
     <Compile Include="Validations\IValidations.cs" />
-    <Compile Include="Validations\Validators.cs" />
+    <Compile Include="Validations\Validations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BullsAndCowsClassDiagram.cd" />
