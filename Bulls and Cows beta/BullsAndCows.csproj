@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionalityes\IScoreboard.cs" />
+    <Compile Include="Functionalities\MainMenu\Menu.cs" />
+    <Compile Include="Functionalities\ScoreSystem\IPlayer.cs" />
+    <Compile Include="Functionalities\ScoreSystem\IScoreboard.cs" />
+    <Compile Include="Functionalities\ScoreSystem\Player.cs" />
+    <Compile Include="Functionalities\ScoreSystem\Score.cs" />
+    <Compile Include="Functionalities\ScoreSystem\WriteToFIle.cs" />
     <Compile Include="GameEngine\EngineMethods.cs" />
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="GameEngine\IEngine.cs" />
-    <Compile Include="Functionalityes\Player.cs" />
     <Compile Include="GameEngine\Engine.cs" />
-    <Compile Include="Functionalityes\Scoreboard.cs" />
+    <Compile Include="Functionalities\ScoreSystem\Scoreboard.cs" />
     <Compile Include="Commands\ICommands.cs" />
     <Compile Include="GameEngine\IRandomMethods.cs" />
     <Compile Include="StartGame.cs" />

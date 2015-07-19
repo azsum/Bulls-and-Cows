@@ -6,21 +6,23 @@
 
     public sealed class Engine : EngineMethods
     {
+        private static object syncLock = new object();
         private static volatile Engine instance;
-        public static object SyncLock { get; } = new object();
+
+        public int AttemptsCount { get; private set; }
 
         private Engine()
         {
         }
 
-        //singelton creational pattern
+        ////singleton creation pattern
         public static Engine InstanceEngine
         {
             get
             {
                 if (instance == null)
                 {
-                    lock (SyncLock)
+                    lock (syncLock)
                     {
                         if (instance == null)
                         {
@@ -28,24 +30,28 @@
                         }
                     }
                 }
+
                 return instance;
             }
         }
-       
+
         public void GameOn()
         {
-            StartGame();
+            this.AttemptsCount = 0;
+            this.StartGame();
             var instanceOfCommand = Command.InstanceCommand;
+            var instanceOfValidations = Validations.InstanceValidations;
             string randomNumber = GenerateRandomSecretNumber();
             int countRevealingDigits = 0;
-            int attemptsCount = 0;
             int usingHelpCount = 0;
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
+
             while (true)
             {
                 Console.Write("Enter your guess or command: ");
                 var command = Console.ReadLine();
-                bool isValidCommand = command != null && (command.Length != 4 || Validations.ValidateDigits(command) == false);
+                bool isValidCommand = command != null && (command.Length != 4 ||
+                    instanceOfValidations.ValidateDigits(command) == false);
                 switch (command)
                 {
                     case "help":
@@ -59,26 +65,29 @@
                         {
                             break;
                         }
+
                     case "restart":
-                        attemptsCount = instanceOfCommand.RestartCommand(attemptsCount, ref randomNumber);
+                        this.AttemptsCount = instanceOfCommand.RestartCommand(this.AttemptsCount, ref randomNumber);
                         continue;
-                    case "scoreboard":
-                        instanceOfCommand.TopCommand();
+                    case "score":
+                        instanceOfCommand.DisplayScoreboard();
                         break;
+
                     case "exit":
+                        Environment.Exit(0);
                         break;
                 }
 
-                if (isValidCommand)
+                if (isValidCommand == true)
                 {
                     Console.WriteLine("Incorrect guess or command!");
                     continue;
                 }
 
-                attemptsCount++;
-                var bulls = 0;
+                this.AttemptsCount++;
+                var bulls = 3;
                 var cows = 0;
-                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
+                this.CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows, usingHelpCount);
                 Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
             }
         }

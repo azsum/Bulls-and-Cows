@@ -1,26 +1,26 @@
 ﻿namespace BullsAndCows.Commands
 {
+    using GameEngine;
     using System;
     using System.Text;
-    using GameEngine;
 
     public sealed class Command : EngineMethods, ICommands
     {
+        private static object syncLock = new object();
         private static volatile Command commandInstance;
-        public static object SyncLock { get; } = new object();
 
         private Command()
         {
         }
 
-        //singelton creational pattern
+        ////singleton creation pattern
         public static Command InstanceCommand
         {
             get
             {
                 if (commandInstance == null)
                 {
-                    lock (SyncLock)
+                    lock (syncLock)
                     {
                         if (commandInstance == null)
                         {
@@ -28,6 +28,7 @@
                         }
                     }
                 }
+
                 return commandInstance;
             }
         }
@@ -47,7 +48,6 @@
                 Console.WriteLine("The secret number is {0}", revealedNumber);
                 Console.WriteLine();
                 Engine.InstanceEngine.GameOn();
-                // to exit the game after exiting the upper game
                 return true;
             }
 
@@ -56,51 +56,17 @@
             return true;
         }
 
-        public int RandomNumberCommand(int usingHelpCount, ref int attemptsCount, ref string randomNumber)
+        public void DisplayScoreboard()
         {
-            if (usingHelpCount > 0)
-            {
-                Console.WriteLine(
-                    "Congratulations! You guessed the secret number in {0} attempts and {1} cheats.",
-                    attemptsCount, usingHelpCount);
-                Console.WriteLine();
-                StartGame();
-                attemptsCount = 0;
-                usingHelpCount = 0;
-                randomNumber = GenerateRandomSecretNumber();
-            }
-            else
-            {
-                Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attemptsCount);
-                AddPlayerToScoreBoard(attemptsCount);
-                attemptsCount = 0;
-                Console.WriteLine();
-                StartGame();
-                randomNumber = GenerateRandomSecretNumber();
-            }
-
-            return usingHelpCount;
-        }
-
-        public void TopCommand()
-        {
-            if (TopScoreBoard.Count == 0)
-            {
-                Console.WriteLine("Top scoreboard is empty.");
-            }
-            else
-            {
-                SortScoreBoard();
-                PrintScoreBoard();
-            }
+            PrintScoreboard();
         }
 
         public int RestartCommand(int attemptsCount, ref string randomNumber)
         {
             Console.WriteLine();
-            StartGame();
+            this.StartGame();
             attemptsCount = 0;
-            randomNumber = GenerateRandomSecretNumber();
+            randomNumber = this.GenerateRandomSecretNumber();
             return attemptsCount;
         }
     }

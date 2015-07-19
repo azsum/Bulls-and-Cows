@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows
 {
-    public class StartGame 
+    public class StartGame
     {
         public static void Main()
         {

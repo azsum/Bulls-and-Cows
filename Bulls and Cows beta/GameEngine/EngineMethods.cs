@@ -1,20 +1,21 @@
 ﻿namespace BullsAndCows.GameEngine
 {
+    using Functionalities.ScoreSystem;
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using Functionalityes;
 
-    public class EngineMethods : Scoreboard,IRandomMethods,IEngine
+    public class EngineMethods : Scoreboard, IEngine
     {
-        public  void StartGame()
+        public void StartGame()
         {
             Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.\r\n");
-            Console.WriteLine("Use 'scoreboard' to view the top scoreboard, 'restart' to start a new game and 'help' " +
+            Console.WriteLine("Use 'score' to view the top scoreboard, 'restart' to start a new game and 'help' " +
                               "to cheat and 'exit' to quit the game.");
+            Console.WriteLine("You have 20 credits.Each guess will cost you 1 credit.Enjoy!\r\n");
         }
 
-        public  void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows)
+        public void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows, int usingHelp)
         {
             var bullIndexes = new List<int>();
             var cowIndexes = new List<int>();
@@ -25,6 +26,12 @@
                 {
                     bullIndexes.Add(i);
                     bulls++;
+                }
+
+                if (bulls == 4 && usingHelp == 0)
+                {
+                    Player.InstancePlayer.DeterminatePlayerFinalResult();
+                    Engine.InstanceEngine.GameOn();
                 }
             }
 
@@ -47,7 +54,7 @@
             }
         }
 
-        public  string GenerateRandomSecretNumber()
+        public string GenerateRandomSecretNumber()
         {
             var secretNumber = new StringBuilder();
             var random = new Random();
@@ -60,7 +67,7 @@
             return secretNumber.ToString();
         }
 
-        public  char[] RevealNumberAtRandomPosition(string secretnumber, char[] cheatNumber)
+        public char[] RevealNumberAtRandomPosition(string secretnumber, char[] cheatNumber)
         {
             while (true)
             {

@@ -4,9 +4,7 @@
     {
         bool HelpCommand(string randomNumber, char[] cheatNumber, ref int countRevealingDigits, ref int usingHelpCount);
 
-        int RandomNumberCommand(int usingHelpCount, ref int attemptsCount, ref string randomNumber);
-
-        void TopCommand();
+        void DisplayScoreboard();
 
         int RestartCommand(int attemptsCount, ref string randomNumber);
     }
