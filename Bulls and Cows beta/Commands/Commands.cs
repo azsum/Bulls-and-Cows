@@ -1,12 +1,12 @@
 ﻿namespace BullsAndCows.Commands
 {
-    using GameEngine;
+    using BullsAndCows.GameEngine;
     using System;
     using System.Text;
 
     public sealed class Command : EngineMethods, ICommands
     {
-        private static object syncLock = new object();
+        private static readonly object SyncLock = new object();
         private static volatile Command commandInstance;
 
         private Command()
@@ -20,7 +20,7 @@
             {
                 if (commandInstance == null)
                 {
-                    lock (syncLock)
+                    lock (SyncLock)
                     {
                         if (commandInstance == null)
                         {
@@ -33,7 +33,8 @@
             }
         }
 
-        public bool HelpCommand(string randomNumber, char[] cheatNumber, ref int countRevealingDigits, ref int usingHelpCount)
+        public bool HelpCommand(string randomNumber, char[] cheatNumber, ref int countRevealingDigits,
+            ref int usingHelpCount)
         {
             var revealedDigits = RevealNumberAtRandomPosition(randomNumber, cheatNumber);
             var revealedNumber = new StringBuilder();
@@ -64,9 +65,9 @@
         public int RestartCommand(int attemptsCount, ref string randomNumber)
         {
             Console.WriteLine();
-            this.StartGame();
+            StartGame();
             attemptsCount = 0;
-            randomNumber = this.GenerateRandomSecretNumber();
+            randomNumber = GenerateRandomSecretNumber();
             return attemptsCount;
         }
     }

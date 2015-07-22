@@ -1,21 +1,18 @@
-﻿namespace BullsAndCows.Functionalities.ScoreSystem
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Text.RegularExpressions;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
-    public abstract class Scoreboard 
+namespace BullsAndCows.Functionalities.ScoreSystem
+{
+    public abstract class Scoreboard
     {
-        public  string Path
+        public string Path
         {
-            get
-            {
-                return @".\..\..\Functionalities\ScoreSystem\Scoreboard.csv";
-            }
+            get { return @".\..\..\Functionalities\ScoreSystem\Scoreboard.csv"; }
         }
-        
+
         public string GetScoreboard()
         {
             return File.ReadAllText(Path);
@@ -23,7 +20,7 @@
 
         public void PrintScoreboard()
         {
-            string scoreboard = File.ReadAllText(Path);
+            var scoreboard = File.ReadAllText(Path);
             Console.WriteLine("---------Scoreboard----------");
             Console.WriteLine(scoreboard);
             Console.WriteLine("-----------------------------");
@@ -32,16 +29,17 @@
         public void SortScoreboard(List<Score> scores)
         {
             scores = scores.OrderByDescending(x => x.PlayerScore).ToList();
-            WriteToFIle.WriteToCsv(scores);
+            WriteToFile.WriteToCsv(scores);
         }
 
         public List<Score> AddPlayerToScoreboard(Player player)
         {
-            string[] highscores = this.GetScoreboard().Trim().Split('\n');
-            List<Score> scores = new List<Score>();
-            for (int i = 0; i < highscores.Length; i++)
+            var highscores = GetScoreboard().Trim().Split('\n');
+            var scores = new List<Score>();
+            var pattern = @"(\d+)[^\d]*$";
+            for (var i = 0; i < highscores.Length; i++)
             {
-                string[] highscore = Regex.Split(highscores[i], @"[\W]+");
+                var highscore = Regex.Split(highscores[i], pattern);
                 scores.Add(new Score(highscore[0], int.Parse(highscore[1])));
             }
 

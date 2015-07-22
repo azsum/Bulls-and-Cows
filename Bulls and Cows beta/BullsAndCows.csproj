@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -43,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Functionalities\MainMenu\Menu.cs" />
     <Compile Include="Functionalities\ScoreSystem\IPlayer.cs" />
+    <Compile Include="Functionalities\ScoreSystem\IScore.cs" />
     <Compile Include="Functionalities\ScoreSystem\IScoreboard.cs" />
+    <Compile Include="Functionalities\ScoreSystem\IWriteToFile.cs" />
     <Compile Include="Functionalities\ScoreSystem\Player.cs" />
     <Compile Include="Functionalities\ScoreSystem\Score.cs" />
     <Compile Include="Functionalities\ScoreSystem\WriteToFIle.cs" />

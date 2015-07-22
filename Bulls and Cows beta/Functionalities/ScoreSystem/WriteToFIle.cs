@@ -1,19 +1,20 @@
-﻿namespace BullsAndCows.Functionalities.ScoreSystem
-{
-    using System.Collections.Generic;
-    using System.IO;
+﻿using BullsAndCows.GameEngine;
+using System.Collections.Generic;
+using System.IO;
 
-    public class WriteToFIle
+namespace BullsAndCows.Functionalities.ScoreSystem
+{
+    public class WriteToFile
     {
         public static void WriteToCsv(List<Score> scores)
         {
-            var path = GameEngine.Engine.InstanceEngine.Path;
-            StreamWriter stream = new StreamWriter(path);
+            var path = Engine.InstanceEngine.Path;
+            var stream = new StreamWriter(path);
             stream.Flush();
             stream.Close();
-            foreach (Score score in scores)
+            foreach (var score in scores)
             {
-                string line = string.Format("{0,-20}:{1}\n", score.PlayerName, score.PlayerScore);
+                var line = string.Format("{0,-30}{1}\n", score.PlayerName, score.PlayerScore);
                 File.AppendAllText(path, line);
             }
         }

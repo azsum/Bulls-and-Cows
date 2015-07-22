@@ -1,9 +1,9 @@
 ﻿namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public class Score
+    public class Score : IScore
     {
-        private string playerName;
-        private int playerScore;
+        private readonly string playerName;
+        private readonly int playerScore;
 
         public Score(string playerName, int playerScore)
         {
@@ -13,12 +13,12 @@
 
         public int PlayerScore
         {
-            get { return this.playerScore; }
+            get { return playerScore; }
         }
 
         public string PlayerName
         {
-            get { return this.playerName; }
+            get { return playerName; }
         }
     }
 }

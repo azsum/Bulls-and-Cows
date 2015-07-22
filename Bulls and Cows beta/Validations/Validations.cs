@@ -3,8 +3,7 @@
     public class Validations : IValidations
     {
         private static volatile Validations validationsInstance;
-
-        private static object syncLock = new object();
+        private static readonly object SyncLock = new object();
 
         private Validations()
         {
@@ -17,7 +16,7 @@
             {
                 if (validationsInstance == null)
                 {
-                    lock (syncLock)
+                    lock (SyncLock)
                     {
                         if (validationsInstance == null)
                         {

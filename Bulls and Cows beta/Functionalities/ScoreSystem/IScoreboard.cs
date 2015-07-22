@@ -1,7 +1,7 @@
-﻿namespace BullsAndCows.Functionalities.ScoreSystem
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace BullsAndCows.Functionalities.ScoreSystem
+{
     public interface IScoreboard
     {
         void SortScoreboard(List<Score> scores);

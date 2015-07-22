@@ -1,10 +1,10 @@
-﻿namespace BullsAndCows.GameEngine
-{
-    using Functionalities.ScoreSystem;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using BullsAndCows.Functionalities.ScoreSystem;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
+namespace BullsAndCows.GameEngine
+{
     public class EngineMethods : Scoreboard, IEngine
     {
         public void StartGame()
@@ -15,7 +15,8 @@
             Console.WriteLine("You have 20 credits.Each guess will cost you 1 credit.Enjoy!\r\n");
         }
 
-        public void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows, int usingHelp)
+        public void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows,
+            int usingHelp)
         {
             var bullIndexes = new List<int>();
             var cowIndexes = new List<int>();

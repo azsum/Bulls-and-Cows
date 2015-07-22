@@ -1,21 +1,23 @@
-﻿namespace BullsAndCows.Functionalities.ScoreSystem
-{
-    using GameEngine;
-    using System;
+﻿using BullsAndCows.GameEngine;
+using System;
 
+namespace BullsAndCows.Functionalities.ScoreSystem
+{
     public class Player : Scoreboard, IPlayer
     {
-        private readonly static object syncLock = new object();
-        private static volatile Player instance;
-        private string nickname;
-        private int points;
         private const int Credits = 20;
+        private static volatile Player instance;
+        private static readonly object SyncLock = new object();
         private readonly int finalPoints = Credits - Engine.InstanceEngine.AttemptsCount;
-
-        public int AttemptsCount { get; private set; }
 
         private Player()
         {
+        }
+
+        public Player(string nickname, int points)
+        {
+            Nickname = nickname;
+            Points = points;
         }
 
         ////singleton creation pattern
@@ -25,7 +27,7 @@
             {
                 if (instance == null)
                 {
-                    lock (syncLock)
+                    lock (SyncLock)
                     {
                         if (instance == null)
                         {
@@ -38,27 +40,13 @@
             }
         }
 
-        public Player(string nickname, int points)
-        {
-            this.nickname = nickname;
-            this.points = points;
-        }
+        public string Nickname { get; set; }
 
-        public string Nickname
-        {
-            get { return this.nickname; }
-            set { this.nickname = value.Length > 30 ? value.Remove(30, value.Length - 30) : value; }
-        }
-
-        public int Points
-        {
-            get { return this.points; }
-            set { this.points = value; }
-        }
+        public int Points { get; set; }
 
         public void DeterminatePlayerFinalResult()
         {
-            if (this.finalPoints > 0)
+            if (finalPoints > 0)
             {
                 PlayerWin();
             }
@@ -73,10 +61,10 @@
             Console.Clear();
             Console.WriteLine("Congratulations!!! You win!");
             Console.WriteLine();
-            Player player = this.CreatePlayer();
+            var player = CreatePlayer();
             var scoreboard = AddPlayerToScoreboard(player);
-            this.SortScoreboard(scoreboard);
-            this.PrintScoreboard();
+            SortScoreboard(scoreboard);
+            PrintScoreboard();
         }
 
         public void GameOver()
@@ -85,14 +73,21 @@
             Console.WriteLine("Game Over");
             Console.WriteLine("Please try again");
             Console.WriteLine();
-            this.PrintScoreboard();
+            PrintScoreboard();
         }
 
         public Player CreatePlayer()
         {
-            Console.WriteLine("Enter a nickname without any whitespace");
-            this.nickname = Console.ReadLine();
-            return new Player(nickname, this.finalPoints);
+            Console.WriteLine("Enter a nickname in less than 25 symbols");
+            var name = Console.ReadLine();
+            while (name.Length > 25)
+            {
+                Console.WriteLine("Enter a nickname in less than 25 symbols");
+                name = Console.ReadLine();
+            }
+
+            var player = new Player(name, finalPoints);
+            return player;
         }
     }
 }

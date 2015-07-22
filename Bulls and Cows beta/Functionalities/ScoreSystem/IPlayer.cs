@@ -2,6 +2,10 @@
 {
     internal interface IPlayer
     {
+        string Nickname { get; set; }
+
+        int Points { get; set; }
+
         Player CreatePlayer();
 
         void GameOver();
