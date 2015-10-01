@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Commands
 {
-    public interface ICommands
+    public interface ICommand
     {
         bool HelpCommand(string randomNumber, char[] cheatNumber, ref int countRevealingDigits, ref int usingHelpCount);
 

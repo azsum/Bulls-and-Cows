@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Validations
 {
-    public interface IValidations
+    public interface IValidator
     {
         bool ValidateDigits(string number);
     }

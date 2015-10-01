@@ -1,16 +1,16 @@
 ﻿namespace BullsAndCows.Validations
 {
-    public class Validations : IValidations
+    public class Validator : IValidator
     {
-        private static volatile Validations validationsInstance;
+        private static volatile Validator validationsInstance;
         private static readonly object SyncLock = new object();
 
-        private Validations()
+        private Validator()
         {
         }
 
         ////singleton creation pattern
-        public static Validations InstanceValidations
+        public static Validator InstanceValidations
         {
             get
             {
@@ -20,7 +20,7 @@
                     {
                         if (validationsInstance == null)
                         {
-                            validationsInstance = new Validations();
+                            validationsInstance = new Validator();
                         }
                     }
                 }

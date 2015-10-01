@@ -40,7 +40,7 @@ namespace BullsAndCows.GameEngine
             AttemptsCount = 0;
             StartGame();
             var instanceOfCommand = Command.InstanceCommand;
-            var instanceOfValidations = Validations.Validations.InstanceValidations;
+            var instanceOfValidations = Validations.Validator.InstanceValidations;
             var randomNumber = GenerateRandomSecretNumber();
             var countRevealingDigits = 0;
             var usingHelpCount = 0;

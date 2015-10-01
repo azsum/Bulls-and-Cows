@@ -12,3 +12,6 @@ Code Refactoring
     -   Moved all methods in coresponding classes.
     -   Fixed knowing bugs.
 
+
+	-	Renamed classes and interfaces plural to singular to follow 
+	best practises introduced in the course "High Quality Programming Code"
