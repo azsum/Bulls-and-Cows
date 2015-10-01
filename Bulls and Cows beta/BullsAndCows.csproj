@@ -46,10 +46,10 @@
     <Compile Include="Functionalities\ScoreSystem\IPlayer.cs" />
     <Compile Include="Functionalities\ScoreSystem\IScore.cs" />
     <Compile Include="Functionalities\ScoreSystem\IScoreboard.cs" />
-    <Compile Include="Functionalities\ScoreSystem\IWriteToFile.cs" />
+    <Compile Include="Functionalities\ScoreSystem\IFileWriter.cs" />
     <Compile Include="Functionalities\ScoreSystem\Player.cs" />
     <Compile Include="Functionalities\ScoreSystem\Score.cs" />
-    <Compile Include="Functionalities\ScoreSystem\WriteToFIle.cs" />
+    <Compile Include="Functionalities\ScoreSystem\FileWriter.cs" />
     <Compile Include="GameEngine\EngineMethods.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="GameEngine\IEngine.cs" />
