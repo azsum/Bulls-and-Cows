@@ -5,7 +5,7 @@ Code Refactoring
     -   Renamed the project to "PlayBullAndCows".
     -   Renamed all variables with bad names.
     -   Splited method SortAndPrint() to Sort() and Print().
-    -   Added new classes: scoreboard, EngineMethods, Engine, Validations,Command, Player.
+    -   Added new classes: Scoreboard, EngineMethods, Engine, Validations, Command, Player.
     -   Added new folders: GameEngine, Validations, Commands, Functionalityes.
     -   Added new Interfaces: ICommand, IEngine, IRandomMethods, IValidations.
     -   Added Class diagram : BullsAndCowsClassDiagram.
