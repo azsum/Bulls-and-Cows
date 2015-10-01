@@ -29,7 +29,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         public void SortScoreboard(List<Score> scores)
         {
             scores = scores.OrderByDescending(x => x.PlayerScore).ToList();
-            WriteToFile.WriteToCsv(scores);
+            FileWriter.WriteToCsv(scores);
         }
 
         public List<Score> AddPlayerToScoreboard(Player player)

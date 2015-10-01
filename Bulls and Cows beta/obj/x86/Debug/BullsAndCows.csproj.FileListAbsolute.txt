@@ -1,0 +1,5 @@
+E:\Telerik Academy\Teamwork Projects\Bulls-and-Cows\Bulls and Cows beta\bin\Debug\BullsAndCows.exe
+E:\Telerik Academy\Teamwork Projects\Bulls-and-Cows\Bulls and Cows beta\bin\Debug\BullsAndCows.pdb
+E:\Telerik Academy\Teamwork Projects\Bulls-and-Cows\Bulls and Cows beta\obj\x86\Debug\BullsAndCows.csprojResolveAssemblyReference.cache
+E:\Telerik Academy\Teamwork Projects\Bulls-and-Cows\Bulls and Cows beta\obj\x86\Debug\BullsAndCows.exe
+E:\Telerik Academy\Teamwork Projects\Bulls-and-Cows\Bulls and Cows beta\obj\x86\Debug\BullsAndCows.pdb

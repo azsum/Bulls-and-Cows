@@ -4,7 +4,7 @@ using System.IO;
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public class WriteToFile
+    public class FileWriter
     {
         public static void WriteToCsv(List<Score> scores)
         {

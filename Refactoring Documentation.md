@@ -10,8 +10,7 @@ Code Refactoring
     -   Added new Interfaces: ICommand, IEngine, IRandomMethods, IValidations.
     -   Added Class diagram : BullsAndCowsClassDiagram.
     -   Moved all methods in coresponding classes.
-    -   Fixed knowing bugs.
-
-
+	-   Fixed knowing bugs.
+	// TO DO: Add job done by teammates
 	-	Renamed classes and interfaces plural to singular to follow 
 	best practises introduced in the course "High Quality Programming Code"

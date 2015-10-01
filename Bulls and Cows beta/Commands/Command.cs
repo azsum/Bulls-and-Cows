@@ -4,7 +4,7 @@
     using System;
     using System.Text;
 
-    public sealed class Command : EngineMethods, ICommands
+    public sealed class Command : EngineMethods, ICommand
     {
         private static readonly object SyncLock = new object();
         private static volatile Command commandInstance;
