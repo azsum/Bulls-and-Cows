@@ -2,7 +2,7 @@
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public interface IWriteToFile
+    public interface IFileWriter
     {
         void WriteToCsv(List<Score> scores);
     }
