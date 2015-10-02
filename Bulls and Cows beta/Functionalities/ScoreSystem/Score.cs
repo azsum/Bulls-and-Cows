@@ -2,23 +2,32 @@
 {
     public class Score : IScore
     {
-        private readonly string playerName;
-        private readonly int playerScore;
+        private string playerName;
+        private int playerScore;
 
         public Score(string playerName, int playerScore)
         {
-            this.playerName = playerName;
-            this.playerScore = playerScore;
-        }
-
-        public int PlayerScore
-        {
-            get { return playerScore; }
+            this.PlayerName = playerName;
+            this.PlayerScore = playerScore;
         }
 
         public string PlayerName
         {
-            get { return playerName; }
+            get { return this.playerName; }
+            private set
+            {
+                this.playerName = value;
+            }
+
+        }
+
+        public int PlayerScore
+        {
+            get { return this.playerScore; }
+            private set
+            {
+                this.playerScore = value;
+            }
         }
     }
 }
