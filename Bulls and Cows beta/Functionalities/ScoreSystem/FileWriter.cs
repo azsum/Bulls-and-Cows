@@ -4,9 +4,9 @@ using System.IO;
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public class FileWriter
+    public class FileWriter : IFileWriter
     {
-        public static void WriteToCsv(List<Score> scores)
+        public void WriteToCsv(List<Score> scores)
         {
             var path = Engine.InstanceEngine.Path;
             var stream = new StreamWriter(path);

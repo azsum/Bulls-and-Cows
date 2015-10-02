@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public abstract class Scoreboard
+    public abstract class Scoreboard : IScoreboard
     {
         public string Path
         {

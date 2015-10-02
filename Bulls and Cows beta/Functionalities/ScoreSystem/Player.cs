@@ -3,7 +3,7 @@ using System;
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public class Player : Scoreboard, IPlayer
+    public class Player : IPlayer
     {
         private const int Credits = 20;
         private static volatile Player instance;
