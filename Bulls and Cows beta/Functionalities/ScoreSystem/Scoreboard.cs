@@ -26,6 +26,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             Console.WriteLine("-----------------------------");
         }
 
+        // breaks because it needs FileWriter
         public void SortScoreboard(List<Score> scores)
         {
             scores = scores.OrderByDescending(x => x.PlayerScore).ToList();

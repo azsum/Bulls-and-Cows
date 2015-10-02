@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BullsAndCows.GameEngine
 {
-    public class EngineMethods : Scoreboard, IEngine
+    public class EngineMethods : IEngine
     {
         public void StartGame()
         {

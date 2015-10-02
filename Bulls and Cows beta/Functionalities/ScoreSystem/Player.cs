@@ -9,6 +9,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         private static volatile Player instance;
         private static readonly object SyncLock = new object();
         private readonly int finalPoints = Credits - Engine.InstanceEngine.AttemptsCount;
+        // add scoreboard?
 
         private Player()
         {
@@ -56,6 +57,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             }
         }
 
+        // breaks because we don`t have Scoreboard to use
         public void PlayerWin()
         {
             Console.Clear();
