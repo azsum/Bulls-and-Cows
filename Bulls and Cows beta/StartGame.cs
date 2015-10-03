@@ -6,7 +6,7 @@ namespace BullsAndCows
     {
         public static void Main()
         {
-            var instance = Engine.InstanceEngine;
+            var instance = Engine.Instance;
             instance.GameOn();
         }
     }

@@ -16,7 +16,7 @@ namespace BullsAndCows.GameEngine
         public int AttemptsCount { get; private set; }
 
         ////singleton creation pattern
-        public static Engine InstanceEngine
+        public static Engine Instance
         {
             get
             {
@@ -40,7 +40,7 @@ namespace BullsAndCows.GameEngine
             AttemptsCount = 0;
             StartGame();
             var instanceOfCommand = Command.InstanceCommand;
-            var instanceOfValidations = Validations.Validator.InstanceValidations;
+            var instanceOfValidations = Validations.Validator.Instance;
             var randomNumber = GenerateRandomSecretNumber();
             var countRevealingDigits = 0;
             var usingHelpCount = 0;

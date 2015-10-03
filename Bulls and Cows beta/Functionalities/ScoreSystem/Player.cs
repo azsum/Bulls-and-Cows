@@ -8,7 +8,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         private const int Credits = 20;
         private static volatile Player instance;
         private static readonly object SyncLock = new object();
-        private readonly int finalPoints = Credits - Engine.InstanceEngine.AttemptsCount;
+        private readonly int finalPoints = Credits - Engine.Instance.AttemptsCount;
         // add scoreboard?
 
         private Player()

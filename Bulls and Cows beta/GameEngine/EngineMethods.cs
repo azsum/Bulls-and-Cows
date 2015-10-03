@@ -32,7 +32,7 @@ namespace BullsAndCows.GameEngine
                 if (bulls == 4 && usingHelp == 0)
                 {
                     Player.InstancePlayer.DeterminatePlayerFinalResult();
-                    Engine.InstanceEngine.GameOn();
+                    Engine.Instance.GameOn();
                 }
             }
 

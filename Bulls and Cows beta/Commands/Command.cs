@@ -48,7 +48,7 @@
             {
                 Console.WriteLine("The secret number is {0}", revealedNumber);
                 Console.WriteLine();
-                Engine.InstanceEngine.GameOn();
+                Engine.Instance.GameOn();
                 return true;
             }
 

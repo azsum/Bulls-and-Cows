@@ -10,7 +10,7 @@
         }
 
         ////singleton creation pattern
-        public static Validator InstanceValidations
+        public static Validator Instance
         {
             get
             {
