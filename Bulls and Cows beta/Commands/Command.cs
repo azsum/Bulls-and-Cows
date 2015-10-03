@@ -14,7 +14,7 @@
         }
 
         ////singleton creation pattern
-        public static Command InstanceCommand
+        public static Command Instance
         {
             get
             {

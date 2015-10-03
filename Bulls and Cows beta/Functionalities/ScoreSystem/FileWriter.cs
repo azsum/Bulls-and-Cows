@@ -8,6 +8,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
     {
         public void WriteToCsv(List<Score> scores)
         {
+            // using streamWriter inorder to release files
             var path = Engine.Instance.Path;
             var stream = new StreamWriter(path);
             stream.Flush();

@@ -39,11 +39,11 @@ namespace BullsAndCows.GameEngine
         {
             AttemptsCount = 0;
             StartGame();
-            var instanceOfCommand = Command.InstanceCommand;
+            var instanceOfCommand = Command.Instance;
             var instanceOfValidations = Validations.Validator.Instance;
             var randomNumber = GenerateRandomSecretNumber();
             var countRevealingDigits = 0;
-            var usingHelpCount = 0;
+            var timesUsedHelp = 0;
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
 
             while (true)
@@ -56,21 +56,19 @@ namespace BullsAndCows.GameEngine
                 {
                     case "help":
                         var helpCommand = instanceOfCommand.HelpCommand(randomNumber, cheatNumber,
-                            ref countRevealingDigits, ref usingHelpCount);
-
+                            ref countRevealingDigits, ref timesUsedHelp);
                         if (helpCommand)
                         {
                             continue;
                         }
-                        break;
 
+                        break;
                     case "restart":
                         AttemptsCount = instanceOfCommand.RestartCommand(AttemptsCount, ref randomNumber);
                         continue;
                     case "score":
                         instanceOfCommand.DisplayScoreboard();
                         break;
-
                     case "exit":
                         Environment.Exit(0);
                         break;
@@ -85,7 +83,7 @@ namespace BullsAndCows.GameEngine
                 AttemptsCount++;
                 var bulls = 3;
                 var cows = 0;
-                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows, usingHelpCount);
+                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows, timesUsedHelp);
                 Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
             }
         }

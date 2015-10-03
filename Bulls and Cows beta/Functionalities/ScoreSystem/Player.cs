@@ -22,7 +22,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         }
 
         ////singleton creation pattern
-        public static Player InstancePlayer
+        public static Player Instance
         {
             get
             {
@@ -58,6 +58,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         }
 
         // breaks because we don`t have Scoreboard to use
+        // set messages as variables(const?), can we use the algorithm changing pattern or is it overkill 
         public void PlayerWin()
         {
             Console.Clear();

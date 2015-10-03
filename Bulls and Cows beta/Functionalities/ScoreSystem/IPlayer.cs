@@ -2,6 +2,7 @@
 {
     internal interface IPlayer
     {
+        // IScore name and points is same as IPlayers
         string Nickname { get; set; }
 
         int Points { get; set; }

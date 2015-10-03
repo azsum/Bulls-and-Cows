@@ -16,7 +16,7 @@ namespace BullsAndCows.GameEngine
         }
 
         public void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows,
-            int usingHelp)
+            int timesUsedHelp)
         {
             var bullIndexes = new List<int>();
             var cowIndexes = new List<int>();
@@ -29,9 +29,9 @@ namespace BullsAndCows.GameEngine
                     bulls++;
                 }
 
-                if (bulls == 4 && usingHelp == 0)
+                if (bulls == 4 && timesUsedHelp == 0)
                 {
-                    Player.InstancePlayer.DeterminatePlayerFinalResult();
+                    Player.Instance.DeterminatePlayerFinalResult();
                     Engine.Instance.GameOn();
                 }
             }
