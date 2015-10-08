@@ -10,40 +10,21 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         private static readonly object SyncLock = new object();
         private readonly int finalPoints = Credits - Engine.Instance.AttemptsCount;
         // add scoreboard?
-
-        private Player()
+        
+        public Player(int points)
         {
+            this.Points = points;
         }
 
         public Player(string nickname, int points)
+            : this(points)
         {
-            Nickname = nickname;
-            Points = points;
+            this.Nickname = nickname;
         }
 
-        ////singleton creation pattern
-        public static Player Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (SyncLock)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new Player();
-                        }
-                    }
-                }
+        public string Nickname { get; private set; }
 
-                return instance;
-            }
-        }
-
-        public string Nickname { get; set; }
-
-        public int Points { get; set; }
+        public int Points { get; private set; }
 
         public void DeterminatePlayerFinalResult()
         {
