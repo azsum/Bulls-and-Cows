@@ -46,9 +46,9 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             Console.WriteLine("Congratulations!!! You win!");
             Console.WriteLine();
             var player = CreatePlayer();
-            var scoreboard = AddPlayerToScoreboard(player);
-            SortScoreboard(scoreboard);
-            PrintScoreboard();
+            //var scoreboard = AddPlayerToScoreboard(player);
+            //SortScoreboard(scoreboard);
+            //PrintScoreboard();
         }
 
         public void GameOver()
@@ -57,7 +57,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             Console.WriteLine("Game Over");
             Console.WriteLine("Please try again");
             Console.WriteLine();
-            PrintScoreboard();
+            //PrintScoreboard();
         }
 
         public Player CreatePlayer()
