@@ -65,7 +65,7 @@
         public int RestartCommand(int attemptsCount, ref string randomNumber)
         {
             Console.WriteLine();
-            StartGame();
+            DisplayStartGameIntroText();
             attemptsCount = 0;
             randomNumber = GenerateRandomSecretNumber();
             return attemptsCount;

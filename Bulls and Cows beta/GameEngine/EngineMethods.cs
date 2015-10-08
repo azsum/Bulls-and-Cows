@@ -7,7 +7,7 @@ namespace BullsAndCows.GameEngine
 {
     public class EngineMethods : IEngine
     {
-        public void StartGame()
+        public void DisplayStartGameIntroText()
         {
             Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.\r\n");
             Console.WriteLine("Use 'score' to view the top scoreboard, 'restart' to start a new game and 'help' " +

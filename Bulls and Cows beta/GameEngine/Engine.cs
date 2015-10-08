@@ -38,7 +38,7 @@ namespace BullsAndCows.GameEngine
         public void GameOn()
         {
             AttemptsCount = 0;
-            StartGame();
+            DisplayStartGameIntroText();
             var instanceOfCommand = Command.Instance;
             var instanceOfValidations = Validations.Validator.Instance;
             var randomNumber = GenerateRandomSecretNumber();
