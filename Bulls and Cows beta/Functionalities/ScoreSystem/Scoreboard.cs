@@ -6,11 +6,13 @@ using System.Text.RegularExpressions;
 
 namespace BullsAndCows.Functionalities.ScoreSystem
 {
-    public abstract class Scoreboard : IScoreboard
+    public class Scoreboard : IScoreboard
     {
+        // should be set so filewriter and this point to one object and if one is changed in both places
+        // it will be reflected
         public string Path
         {
-            get { return @".\..\..\Functionalities\ScoreSystem\Scoreboard.csv"; }
+            get { return @"../Save/Scoreboard.csv"; }
         }
 
         public string GetScoreboard()
@@ -30,7 +32,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         public void SortScoreboard(List<Score> scores)
         {
             scores = scores.OrderByDescending(x => x.PlayerScore).ToList();
-            FileWriter.WriteToCsv(scores);
+            FileWriter.Write(scores);
         }
 
         public List<Score> AddPlayerToScoreboard(Player player)
@@ -45,6 +47,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             }
 
             scores.Add(new Score(player.Nickname, player.Points));
+            // sort
             return scores;
         }
     }

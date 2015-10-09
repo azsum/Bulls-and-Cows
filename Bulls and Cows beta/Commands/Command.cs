@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Commands
 {
-    using BullsAndCows.GameEngine;
+    using GameEngine;
     using System;
     using System.Text;
 
