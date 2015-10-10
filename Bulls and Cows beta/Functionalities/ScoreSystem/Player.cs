@@ -6,8 +6,6 @@ namespace BullsAndCows.Functionalities.ScoreSystem
     public class Player : IPlayer
     {
         private const int Credits = 20;
-        private static volatile Player instance;
-        private static readonly object SyncLock = new object();
         private readonly int finalPoints = Credits - Engine.Instance.AttemptsCount;
         // add scoreboard?
         
@@ -51,6 +49,8 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             //PrintScoreboard();
         }
 
+        // even if player doesn`t finish the game if his score is good enough 
+        // it should be added
         public void GameOver()
         {
             Console.Clear();
