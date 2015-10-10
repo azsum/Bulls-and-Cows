@@ -29,10 +29,11 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         }
 
         // breaks because it needs FileWriter
-        public void SortScoreboard(List<Score> scores)
+        public IList<Score> SortScoreboard(IList<Score> scores)
         {
-            scores = scores.OrderByDescending(x => x.PlayerScore).ToList();
-            FileWriter.Write(scores);
+            var sorted = new List<Score>();
+            sorted = scores.OrderByDescending(x => x.PlayerScore).ToList();
+            return sorted;
         }
 
         public List<Score> AddPlayerToScoreboard(Player player)
@@ -47,7 +48,6 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             }
 
             scores.Add(new Score(player.Nickname, player.Points));
-            // sort
             return scores;
         }
     }

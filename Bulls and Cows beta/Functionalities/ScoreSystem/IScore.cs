@@ -2,8 +2,8 @@
 {
     internal interface IScore
     {
-        int PlayerScore { get; }
-
         string PlayerName { get; }
+
+        int PlayerScore { get; }
     }
 }

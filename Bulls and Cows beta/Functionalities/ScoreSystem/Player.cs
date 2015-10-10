@@ -44,6 +44,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             Console.WriteLine("Congratulations!!! You win!");
             Console.WriteLine();
             var player = CreatePlayer();
+            // not his job
             //var scoreboard = AddPlayerToScoreboard(player);
             //SortScoreboard(scoreboard);
             //PrintScoreboard();

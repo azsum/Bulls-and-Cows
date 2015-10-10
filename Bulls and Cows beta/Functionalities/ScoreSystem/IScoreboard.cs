@@ -4,7 +4,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
 {
     public interface IScoreboard
     {
-        void SortScoreboard(List<Score> scores);
+        IList<Score> SortScoreboard(IList<Score> scores);
 
         List<Score> AddPlayerToScoreboard(Player player);
 
