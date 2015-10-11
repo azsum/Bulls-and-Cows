@@ -6,6 +6,7 @@
 
     public sealed class Command : EngineMethods, ICommand
     {
+        private const int NUMBER_LENGTH = 4;
         private static readonly object SyncLock = new object();
         private static volatile Command commandInstance;
 
@@ -38,13 +39,13 @@
         {
             var revealedDigits = RevealNumberAtRandomPosition(randomNumber, cheatNumber);
             var revealedNumber = new StringBuilder();
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < NUMBER_LENGTH; i++)
             {
                 revealedNumber.Append(revealedDigits[i]);
             }
 
             countRevealingDigits++;
-            if (countRevealingDigits == 4)
+            if (countRevealingDigits == NUMBER_LENGTH)
             {
                 Console.WriteLine("The secret number is {0}", revealedNumber);
                 Console.WriteLine();

@@ -55,13 +55,8 @@ namespace BullsAndCows.GameEngine
                     case "help":
                         var helpCommand = instanceOfCommand.HelpCommand(randomNumber, cheatNumber,
                             ref countRevealingDigits, ref timesUsedHelp);
-                        //Console.WriteLine(helpCommand);
-                        if (helpCommand)
-                        {
-                            continue;
-                        }
-
-                        break;
+                        
+                        continue;
                     case "restart":
                         AttemptsCount = instanceOfCommand.RestartCommand(AttemptsCount, ref randomNumber);
                         continue;
