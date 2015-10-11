@@ -30,12 +30,12 @@ namespace BullsAndCows.GameEngine
                     bullIndexes.Add(i);
                     bulls++;
                 }
+            }
 
-                if (bulls == NUMBER_LENGTH && timesUsedHelp == 0)
-                {
-                    //Player.Instance.DeterminatePlayerFinalResult();
-                    Engine.Instance.GameOn();
-                }
+            if (bulls == NUMBER_LENGTH && timesUsedHelp == 0)
+            {
+                //Player.Instance.DeterminatePlayerFinalResult();
+                Engine.Instance.GameOn();
             }
 
             for (var i = 0; i < guessNumber.Length; i++)
