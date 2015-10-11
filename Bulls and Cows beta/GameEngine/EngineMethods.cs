@@ -40,19 +40,19 @@ namespace BullsAndCows.GameEngine
 
             for (var i = 0; i < guessNumber.Length; i++)
             {
-                for (var index = 0; index < secretNumber.Length; index++)
+                for (var j = 0; j < secretNumber.Length; j++)
                 {
-                    var isStartDigitBull = bullIndexes.Contains(index);
+                    var isStartDigitBull = bullIndexes.Contains(j);
                     var isCurrentDigitBull = bullIndexes.Contains(i);
                     var isDigitBull = isStartDigitBull || isCurrentDigitBull;
-                    var isAlreadyAProcessedCow = cowIndexes.Contains(index);
-                    var canBeACow = (i != index) && !isDigitBull && !isAlreadyAProcessedCow;
+                    var isAlreadyAProcessedCow = cowIndexes.Contains(j);
+                    var canBeACow = (i != j) && !isDigitBull && !isAlreadyAProcessedCow;
                     if (canBeACow)
                     {
-                        var isACow = guessNumber[i].Equals(secretNumber[index]);
+                        var isACow = guessNumber[i].Equals(secretNumber[j]);
                         if (isACow)
                         {
-                            cowIndexes.Add(index);
+                            cowIndexes.Add(j);
                             cows++;
                             break;
                         }
