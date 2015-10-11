@@ -2,6 +2,7 @@
 {
     public class Validator : IValidator
     {
+        private const int NUMBER_LENGTH = 4;
         private static volatile Validator validationsInstance;
         private static readonly object SyncLock = new object();
 
@@ -31,21 +32,25 @@
 
         public bool ValidateDigits(string number)
         {
-            var count = 0;
-            for (var i = 0; i < 4; i++)
+            var isValidNumber = true;
+            var isNumberFourDigitsLong = number.Trim().Length <= NUMBER_LENGTH;
+            if (isNumberFourDigitsLong)
             {
-                if (char.IsDigit(number[i]))
+                for (var i = 0; i < NUMBER_LENGTH; i++)
                 {
-                    count++;
+                    var isCharDigit = char.IsDigit(number[i]);
+                    if (!isCharDigit)
+                    {
+                        isValidNumber = false;
+                    }
                 }
             }
-
-            if (count <= 4)
+            else
             {
-                return true;
+                isValidNumber = false;
             }
 
-            return false;
+            return isValidNumber;
         }
     }
 }
