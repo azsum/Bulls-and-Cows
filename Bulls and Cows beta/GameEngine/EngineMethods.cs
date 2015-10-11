@@ -31,7 +31,7 @@ namespace BullsAndCows.GameEngine
 
                 if (bulls == 4 && timesUsedHelp == 0)
                 {
-                    Player.Instance.DeterminatePlayerFinalResult();
+                    //Player.Instance.DeterminatePlayerFinalResult();
                     Engine.Instance.GameOn();
                 }
             }

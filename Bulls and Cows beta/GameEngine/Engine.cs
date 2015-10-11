@@ -50,13 +50,12 @@ namespace BullsAndCows.GameEngine
             {
                 Console.Write("Enter your guess or command: ");
                 var command = Console.ReadLine();
-                var isValidCommand = command != null && (command.Length != 4 ||
-                                                         instanceOfValidations.ValidateDigits(command) == false);
                 switch (command)
                 {
                     case "help":
                         var helpCommand = instanceOfCommand.HelpCommand(randomNumber, cheatNumber,
                             ref countRevealingDigits, ref timesUsedHelp);
+                        //Console.WriteLine(helpCommand);
                         if (helpCommand)
                         {
                             continue;
@@ -74,17 +73,24 @@ namespace BullsAndCows.GameEngine
                         break;
                 }
 
-                if (isValidCommand)
+                var isValidAction = command != null && (command.Length != 4 ||
+                                                         instanceOfValidations.ValidateDigits(command) == false);
+                if (isValidAction)
                 {
                     Console.WriteLine("Incorrect guess or command!");
                     continue;
                 }
 
-                AttemptsCount++;
-                var bulls = 3;
+                int guess;
+                var bulls = 0;
                 var cows = 0;
-                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows, timesUsedHelp);
-                Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                var isValidGuess = int.TryParse(command, out guess);
+                if (isValidGuess)
+                {
+                    AttemptsCount++;
+                    CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows, timesUsedHelp);
+                    Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                }
             }
         }
     }

@@ -59,7 +59,7 @@
 
         public void DisplayScoreboard()
         {
-            PrintScoreboard();
+            //PrintScoreboard();
         }
 
         public int RestartCommand(int attemptsCount, ref string randomNumber)
