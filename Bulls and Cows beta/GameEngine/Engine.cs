@@ -48,8 +48,8 @@ namespace BullsAndCows.GameEngine
 
             while (true)
             {
-                Console.Write("Enter your guess or command: ");
-                var command = Console.ReadLine();
+                 Console.Write("Enter your guess or command: ");
+                var command = Console.ReadLine().Trim();
                 switch (command)
                 {
                     case "help":

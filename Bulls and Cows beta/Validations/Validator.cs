@@ -33,7 +33,7 @@
         public bool ValidateDigits(string number)
         {
             var isValidNumber = true;
-            var isNumberFourDigitsLong = number.Trim().Length <= NUMBER_LENGTH;
+            var isNumberFourDigitsLong = number.Length <= NUMBER_LENGTH;
             if (isNumberFourDigitsLong)
             {
                 for (var i = 0; i < NUMBER_LENGTH; i++)
