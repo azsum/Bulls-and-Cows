@@ -7,6 +7,8 @@ namespace BullsAndCows.GameEngine
 {
     public class EngineMethods : IEngine
     {
+        private const int NUMBER_LENGTH = 4;
+
         public void DisplayStartGameIntroText()
         {
             Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.\r\n");
@@ -29,7 +31,7 @@ namespace BullsAndCows.GameEngine
                     bulls++;
                 }
 
-                if (bulls == 4 && timesUsedHelp == 0)
+                if (bulls == NUMBER_LENGTH && timesUsedHelp == 0)
                 {
                     //Player.Instance.DeterminatePlayerFinalResult();
                     Engine.Instance.GameOn();
@@ -61,15 +63,15 @@ namespace BullsAndCows.GameEngine
 
         public string GenerateRandomSecretNumber()
         {
-            var secretNumber = new StringBuilder();
+            var resultNumber = new StringBuilder();
             var random = new Random();
-            while (secretNumber.Length != 4)
+            while (resultNumber.Length != NUMBER_LENGTH)
             {
                 var number = random.Next(0, 10);
-                secretNumber.Append(number.ToString());
+                resultNumber.Append(number.ToString());
             }
 
-            return secretNumber.ToString();
+            return resultNumber.ToString();
         }
 
         public char[] RevealNumberAtRandomPosition(string secretnumber, char[] cheatNumber)
@@ -77,7 +79,7 @@ namespace BullsAndCows.GameEngine
             while (true)
             {
                 var rand = new Random();
-                var index = rand.Next(0, 4);
+                var index = rand.Next(0, NUMBER_LENGTH);
                 if (cheatNumber[index] == 'X')
                 {
                     cheatNumber[index] = secretnumber[index];
