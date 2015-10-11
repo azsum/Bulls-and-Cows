@@ -8,7 +8,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
         private const int Credits = 20;
         private readonly int finalPoints = Credits - Engine.Instance.AttemptsCount;
         // add scoreboard?
-        
+
         public Player(int points)
         {
             this.Points = points;
@@ -73,6 +73,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
 
             var player = new Player(name, finalPoints);
             return player;
+            //return new Player("test", 0);
         }
     }
 }

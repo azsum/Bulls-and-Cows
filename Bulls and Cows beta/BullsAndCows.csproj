@@ -56,7 +56,6 @@
     <Compile Include="GameEngine\Engine.cs" />
     <Compile Include="Functionalities\ScoreSystem\Scoreboard.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="GameEngine\IRandomMethods.cs" />
     <Compile Include="StartGame.cs" />
     <Compile Include="Validations\IValidator.cs" />
     <Compile Include="Validations\Validator.cs" />

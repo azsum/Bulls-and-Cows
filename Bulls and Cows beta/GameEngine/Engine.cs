@@ -6,6 +6,7 @@ namespace BullsAndCows.GameEngine
 
     public sealed class Engine : EngineMethods
     {
+        public const int MAX_NUMBER_LENGTH = 4;
         private static readonly object SyncLock = new object();
         private static volatile Engine instance;
 
@@ -13,6 +14,7 @@ namespace BullsAndCows.GameEngine
         {
         }
 
+        // not his job
         public int AttemptsCount { get; private set; }
 
         ////singleton creation pattern
@@ -39,6 +41,7 @@ namespace BullsAndCows.GameEngine
         {
             AttemptsCount = 0;
             DisplayStartGameIntroText();
+            // factory ?
             var instanceOfCommand = Command.Instance;
             var instanceOfValidations = Validations.Validator.Instance;
             var secretNumber = GenerateRandomSecretNumber();
