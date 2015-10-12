@@ -8,7 +8,7 @@ namespace BullsAndCows.Functionalities.ScoreSystem
     public class FileWriter : IFileWriter
     {
         // add different types of files
-        public void Write(List<Score> scores)
+        public virtual void Write(List<Score> scores)
         {
             // should be set so filewriter and this point to one object and if one is changed in both places
             // it will be reflected
