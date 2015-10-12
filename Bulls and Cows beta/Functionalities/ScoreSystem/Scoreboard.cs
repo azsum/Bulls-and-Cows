@@ -28,7 +28,6 @@ namespace BullsAndCows.Functionalities.ScoreSystem
             Console.WriteLine("-----------------------------");
         }
 
-        // breaks because it needs FileWriter
         public IList<Score> SortScoreboard(IList<Score> scores)
         {
             var sorted = new List<Score>();

@@ -8,13 +8,15 @@ namespace BullsAndCows.GameEngine
     public class EngineMethods : IEngine
     {
         private const int NUMBER_LENGTH = 4;
+        private readonly string IntroMessage = "Welcome to “Bulls and Cows”. Please try to guess my secret 4-digit number. Use 'score' to view the top scoreboard, 'restart' to start a new game and 'help' to reveal one of the digits, and 'exit' to quit the game. You have 20 credits.Each guess will cost you 1 credit. Enjoy!\r\n";
 
         public void DisplayStartGameIntroText()
         {
-            Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.\r\n");
-            Console.WriteLine("Use 'score' to view the top scoreboard, 'restart' to start a new game and 'help' " +
-                              "to cheat and 'exit' to quit the game.");
-            Console.WriteLine("You have 20 credits.Each guess will cost you 1 credit.Enjoy!\r\n");
+            //Console.WriteLine("Welcome to “Bulls and Cows” game. Please try to guess my secret 4-digit number.\r\n");
+            //Console.WriteLine("Use 'score' to view the top scoreboard, 'restart' to start a new game and 'help' " +
+            //                  "to cheat and 'exit' to quit the game.");
+            //Console.WriteLine("You have 20 credits.Each guess will cost you 1 credit.Enjoy!\r\n");
+            Console.WriteLine(this.IntroMessage);
         }
 
         public void CalculateBullsAndCows(string secretNumber, string guessNumber, ref int bulls, ref int cows,
