@@ -1,20 +1,24 @@
-﻿namespace BullsAndCows.GameEngine
+﻿
+namespace BullsAndCows.GameEngine
 {
     using Commands;
     using System;
-    using Validations;
 
     public sealed class Engine : EngineMethods
     {
+        public const int MAX_NUMBER_LENGTH = 4;
+        private static readonly object SyncLock = new object();
         private static volatile Engine instance;
-        public static object SyncLock { get; } = new object();
 
         private Engine()
         {
         }
 
-        //singelton creational pattern
-        public static Engine InstanceEngine
+        // not his job
+        public int AttemptsCount { get; private set; }
+
+        ////singleton creation pattern
+        public static Engine Instance
         {
             get
             {
@@ -28,58 +32,62 @@
                         }
                     }
                 }
+
                 return instance;
             }
         }
-       
+
         public void GameOn()
         {
-            StartGame();
-            var instanceOfCommand = Command.InstanceCommand;
-            string randomNumber = GenerateRandomSecretNumber();
-            int countRevealingDigits = 0;
-            int attemptsCount = 0;
-            int usingHelpCount = 0;
+            AttemptsCount = 0;
+            DisplayStartGameIntroText();
+            // factory ?
+            var instanceOfCommand = Command.Instance;
+            var instanceOfValidations = Validations.Validator.Instance;
+            var secretNumber = GenerateRandomSecretNumber();
+            var countRevealingDigits = 0;
+            var timesUsedHelp = 0;
             char[] cheatNumber = { 'X', 'X', 'X', 'X' };
+
             while (true)
             {
-                Console.Write("Enter your guess or command: ");
-                var command = Console.ReadLine();
-                bool isValidCommand = command != null && (command.Length != 4 || Validators.ValidateDigits(command) == false);
+                 Console.Write("Enter your guess or command: ");
+                var command = Console.ReadLine().Trim();
                 switch (command)
                 {
                     case "help":
-                        var helpCommand = instanceOfCommand.HelpCommand(randomNumber, cheatNumber, ref countRevealingDigits, ref usingHelpCount);
-
-                        if (helpCommand)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    case "restart":
-                        attemptsCount = instanceOfCommand.RestartCommand(attemptsCount, ref randomNumber);
+                        var helpCommand = instanceOfCommand.HelpCommand(secretNumber, cheatNumber,
+                            ref countRevealingDigits, ref timesUsedHelp);
                         continue;
-                    case "scoreboard":
-                        instanceOfCommand.TopCommand();
+                    case "restart":
+                        AttemptsCount = instanceOfCommand.RestartCommand(AttemptsCount, ref secretNumber);
+                        continue;
+                    case "score":
+                        instanceOfCommand.DisplayScoreboard();
                         break;
                     case "exit":
+                        Environment.Exit(0);
                         break;
                 }
 
-                if (isValidCommand)
+                var isValidAction = command != null && (command.Length != 4 ||
+                                                         instanceOfValidations.ValidateDigits(command) == false);
+                if (isValidAction)
                 {
                     Console.WriteLine("Incorrect guess or command!");
                     continue;
                 }
 
-                attemptsCount++;
+                int guess;
                 var bulls = 0;
                 var cows = 0;
-                CalculateBullsAndCows(randomNumber, command, ref bulls, ref cows);
-                Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                var isValidGuess = int.TryParse(command, out guess);
+                if (isValidGuess)
+                {
+                    AttemptsCount++;
+                    CalculateBullsAndCows(secretNumber, command, ref bulls, ref cows, timesUsedHelp);
+                    Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                }
             }
         }
     }
